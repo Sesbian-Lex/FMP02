@@ -1,0 +1,130 @@
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+#root {
+  text-align: center;
+  padding: 5px;
+}
+
+.mainContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: calc(100vh - 10px);
+  /* background-color: antiquewhite; */
+  width: calc(100vw - 10px);
+}
+
+.diagramContainer{
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 45%;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.diagram{
+  max-width: 100%;
+}
+
+.inputContainer{
+  background-color: rgba(0, 0, 0, 0.253);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 45%;
+  padding: 10px;
+}
+
+.inputBar{
+  width: 100%;
+  height: 10%;
+  font-size: 2rem;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.listContainer{
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+  background-color: rgba(95, 95, 95, 0.199);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+  align-items: center;
+  align-content: center;
+  border-radius: 10px 10px 0px 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable overlay;
+}
+
+li{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  padding: 3px;
+  border-bottom: 2px solid rgba(5, 5, 5, 0.514);
+  
+}
+
+.inputText{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.transFuncContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding-bottom: 5px;
+  overflow-x: auto;
+  /* scrollbar-gutter: stable overlay; */
+
+}
+
+.stateNumber{
+  width: 36px;
+  aspect-ratio: 1/1;
+  padding-top: 4px;
+  /* background-color:rgb(117, 5, 5); */
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.644);
+  flex-shrink: 0;
+}
+
+.acceptFinal{
+  background-color:lab(48.1% -51.78 47.42);
+}
+
+.rejectFinal{
+  background-color:lab(27.24% 48.13 36.77);
+}
+
+.stateArrow{
+  padding-top: 4px;
+}
+
+input{
+  border: 0px;
+  padding: 10px;
+}
+
+
