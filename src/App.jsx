@@ -84,8 +84,8 @@ function App() {
         //will build the transition function inside the loop
         let tempTranFunc = '1';
         setFailState("none")
-        // bumpSound.play()
-        // await new Promise(r => setTimeout(r, 550))
+        bumpSound.play()
+        await new Promise(r => setTimeout(r, 550))
 
         for(const chars of inputString){
           //character validation
@@ -99,12 +99,12 @@ function App() {
 
           //calls currentState setter for DOM rerendering
           setCurrentState(current)
-          // bumpSound.play()
+          bumpSound.play()
 
           //string for transition function, adds either a or b
           tempTranFunc += chars + current.slice(1);
 
-          // await new Promise(r => setTimeout(r, 550))
+          await new Promise(r => setTimeout(r, 550))
         }
 
         //ends in accepting state and last alphabet is a or b
@@ -136,7 +136,7 @@ function App() {
         console.log(tempCurrentStrings)
         inputRef.current.value = '';
 
-        // await new Promise(r => setTimeout(r, 2500))
+        await new  Promise(r => setTimeout(r, 2500))
         //resets all variables used
         setCurrentState("none")
         setFailState("none")
@@ -144,14 +144,16 @@ function App() {
         //isDisabled disabled
         setIsDisabled(false)
       }
+
+      console.log("current strings are: ", currentStrings)
     };
 
   return (
     <div className='mainContainer'>
 
       <div className='diagramContainer'>
-        {/* <Diagram currentState={currentState} failState={failState} finalState={finalState}/> */}
-        <img src='./src/assets/diagram.svg' className='diagram'/>
+        <Diagram currentState={currentState} failState={failState} finalState={finalState}/>
+        {/* <img src='./src/assets/diagram.svg' className='diagram'/> */}
       </div>
 
 

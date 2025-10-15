@@ -1,5 +1,5 @@
 .state-diagram {
-  width: 400px;
+  width: 1600px;
   /* background: #000000; */
 }
 
@@ -71,4 +71,9 @@
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
   animation-play-state: running; /* changed */
+}
+
+.transition {
+  background-color: rgba(0, 0, 0, 0);
+  fill: none;
 }

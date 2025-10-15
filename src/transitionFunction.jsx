@@ -16,7 +16,7 @@ function TransitionDiagram({transFunc, acceptStates, accepted}){
             case '8':
             case '9':
             case 'X':
-                if (i == transFunc.length - 1 && acceptStates.includes('Q' + transFunc[i] && accepted) ) functionDiagram.push(<div key={'C' + i} className='stateNumber acceptFinal'>{transFunc[i]}</div>)
+                if (i == transFunc.length - 1 && acceptStates.includes('Q' + transFunc[i]) && accepted) functionDiagram.push(<div key={'C' + i} className='stateNumber acceptFinal'>{transFunc[i]}</div>)
                 else if(i == transFunc.length - 1) functionDiagram.push(<div key={'C' + i} className='stateNumber rejectFinal'>{transFunc[i]}</div>)
                 else functionDiagram.push(<div key={'C' + i} className='stateNumber'>{transFunc[i]}</div>)
                 break;
