@@ -95,9 +95,13 @@ function App() {
           }
 
           //checks current state and checks where it leads
+          let tempCurrentSquared = []
           current.forEach((item) => {
-            
+            tempCurrentSquared = [...new Set([...tempCurrentSquared, ...transition[item][chars]])]
           })
+          current = tempCurrentSquared.filter(state => state !== 'none');
+
+          console.log("current states are: ", current)
 
           //calls currentState setter for DOM rerendering
           setCurrentState(current)

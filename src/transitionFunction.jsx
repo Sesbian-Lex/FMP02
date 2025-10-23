@@ -2,7 +2,7 @@ function TransitionDiagram({transFunc, acceptStates, accepted}){
     let functionDiagram = [];
     functionDiagram.push(<div key={'C'} className='stateArrow'>▶</div>)
 
-        console.log("accept States: ", acceptStates)
+        // console.log("accept States: ", acceptStates)
     for (let i = 0; i<transFunc.length; i++){
         switch (transFunc[i]) {
             case '0':
