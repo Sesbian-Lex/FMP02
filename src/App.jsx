@@ -26,19 +26,19 @@ function App() {
 
     //transition table
     const transition = {
-        'Q1' : { 'a' : 'Q6', 'b' : 'Q7'},
-        'Q2' : { 'a' : 'Q3', 'b' : 'Q5'},
-        'Q3' : { 'a' : 'QX', 'b' : 'Q2'},
-        'Q4' : { 'a' : 'Q5', 'b' : 'Q4'},
-        'Q5' : { 'a' : 'QX', 'b' : 'QX'},
-        'Q6' : { 'a' : 'Q6', 'b' : 'Q8'},
-        'Q7' : { 'a' : 'Q5', 'b' : 'Q4'},
-        'Q8' : { 'a' : 'Q9', 'b' : 'Q7'},
-        'Q9' : { 'a' : 'QX', 'b' : 'Q2'},
-        'QX' : { 'a' : 'QX', 'b' : 'QX'},
+        'Q1' : { 'a' : ['Q1', 'Q2', 'Q3', 'Q4', 'Q5'], 'b' : ['Q4', 'Q5']},
+        'Q2' : { 'a' : ['Q3'], 'b' : ['Q5']},
+        'Q3' : { 'a' : ['none'], 'b' : ['Q2']},
+        'Q4' : { 'a' : ['none'], 'b' : ['Q5']},
+        'Q5' : { 'a' : ['none'], 'b' : ['none']},
+        // 'Q6' : { 'a' : 'Q6', 'b' : 'Q8'},
+        // 'Q7' : { 'a' : 'Q5', 'b' : 'Q4'},
+        // 'Q8' : { 'a' : 'Q9', 'b' : 'Q7'},
+        // 'Q9' : { 'a' : 'QX', 'b' : 'Q2'},
+        // 'QX' : { 'a' : 'QX', 'b' : 'QX'},
     }
 
-    const acceptStates = ["Q5", "Q6", "Q7", "Q8", "Q9"]
+    const acceptStates = ["Q5"]
 
     //history of inputted strings
     const [currentStrings, setCurrentStrings] = useState([
@@ -69,7 +69,7 @@ function App() {
         const inputString = inputRef.current.value
 
         //initial state
-        let current = "Q1"
+        let current = ["Q1"]
         setCurrentState(current)
 
         //copies current strings or the input history
@@ -95,7 +95,9 @@ function App() {
           }
 
           //checks current state and checks where it leads
-          current = transition[current][chars]
+          current.forEach((item) => {
+            
+          })
 
           //calls currentState setter for DOM rerendering
           setCurrentState(current)
