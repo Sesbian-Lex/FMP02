@@ -1,5 +1,6 @@
 function TransitionDiagram({transFunc, acceptStates, accepted}){
     let functionDiagram = [];
+    console.log(transFunc)
     functionDiagram.push(<div key={'C'} className='stateArrow'>▶</div>)
 
         // console.log("accept States: ", acceptStates)
@@ -22,7 +23,9 @@ function TransitionDiagram({transFunc, acceptStates, accepted}){
                 break;
             case 'a':
             case 'b':
-                functionDiagram.push(<div key={'C' + i} className='stateArrow'>→{transFunc[i]}→</div>)
+            default:
+                if(i == transFunc.length - 1) functionDiagram.push(<div key={'C' + i} className='stateArrow wrongKey'>→{transFunc[i]}→</div>)
+                else functionDiagram.push(<div key={'C' + i} className='stateArrow'>→{transFunc[i]}→</div>)
                 break;
             }
     }

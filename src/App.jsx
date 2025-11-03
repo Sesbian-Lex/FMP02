@@ -29,35 +29,12 @@ function App() {
         'Q1' : { 'a' : ['Q1', 'Q2', 'Q3', 'Q4', 'Q5'], 'b' : ['Q4', 'Q5']},
         'Q2' : { 'a' : ['Q3'], 'b' : ['Q5']},
         'Q3' : { 'a' : ['none'], 'b' : ['Q2']},
-        'Q4' : { 'a' : ['none'], 'b' : ['Q5']},
+        'Q4' : { 'a' : ['Q5'], 'b' : ['Q4']},
         'Q5' : { 'a' : ['none'], 'b' : ['none']},
-        // 'Q6' : { 'a' : 'Q6', 'b' : 'Q8'},
-        // 'Q7' : { 'a' : 'Q5', 'b' : 'Q4'},
-        // 'Q8' : { 'a' : 'Q9', 'b' : 'Q7'},
-        // 'Q9' : { 'a' : 'QX', 'b' : 'Q2'},
-        // 'QX' : { 'a' : 'QX', 'b' : 'QX'},
     }
 
-    const acceptStates = ["Q5"]
-
     //history of inputted strings
-    const [currentStrings, setCurrentStrings] = useState([
-      // {
-      //   string : "abba",
-      //   accepted : false,
-      //   transFunc : "0a1b3b1a0"
-      // },
-      // {
-      //   string : "abbba",
-      //   accepted : true,
-      //   transFunc : "0a1b3b1b3a2"
-      // },
-      // {
-      //   string : "abbaa",
-      //   accepted : false,
-      //   transFunc : "0a1b3b1a0a1"
-      // },
-    ])
+    const [currentStrings, setCurrentStrings] = useState([])
 
     //checks each keypress when focusing on input bar
     const handleKeyDown = async (event) => {
@@ -91,6 +68,7 @@ function App() {
           //character validation
           if(chars != 'a' && chars != 'b'){
             wrongKey = true;
+            tempTranFunc += chars
             break;
           }
 
@@ -98,29 +76,37 @@ function App() {
           let tempCurrentSquared = []
           current.forEach((item) => {
             tempCurrentSquared = [...new Set([...tempCurrentSquared, ...transition[item][chars]])]
+
           })
+
+          //removes none or deadends
           current = tempCurrentSquared.filter(state => state !== 'none');
 
-          console.log("current states are: ", current)
+          //makes sure 5 is always at the last for the transition function
+          current.sort();
+
+          // console.log("current states are: ", current.sort())
 
           //calls currentState setter for DOM rerendering
           setCurrentState(current)
+          console.log(current)
           bumpSound.play()
 
           //string for transition function, adds either a or b
-          tempTranFunc += chars + current.slice(1);
+          tempTranFunc += chars + current.join('').replace(/Q/g,'')
 
           await new Promise(r => setTimeout(r, 550))
         }
 
         //ends in accepting state and last alphabet is a or b
-        if(acceptStates.includes(current) && wrongKey === false){
+        if(current.includes("Q5") && wrongKey === false){
           //creates new object in tempCurrentStrings
           tempCurrentStrings.unshift({ string : inputString, accepted : true, transFunc : tempTranFunc})
           healSound.play()
           //will set finalstate to accept or reject also where it ends
-          tempFinal = "accept"
-          setFinalState(current + tempFinal)
+          tempFinal = [...current, "accept"]
+          setFinalState(tempFinal)
+          console.log("will pass:", tempFinal)
 
           
         } else {
@@ -133,8 +119,9 @@ function App() {
           setFailState(current)
 
           //will set finalstate to accept or reject also where it ends
-          tempFinal = "reject"
-          setFinalState(current + tempFinal)
+          tempFinal = [...current, "reject"]
+          setFinalState(tempFinal)
+          console.log("will pass:", tempFinal)
         }
 
         //updates currentStrings to include last input
@@ -151,7 +138,6 @@ function App() {
         setIsDisabled(false)
       }
 
-      console.log("current strings are: ", currentStrings)
     };
 
   return (
@@ -177,7 +163,7 @@ function App() {
                   <div>{items.string}</div>
                   <div>{items.accepted ? 'Accepted' : 'Rejected'}</div>
                 </div>
-                <TransitionDiagram transFunc={items.transFunc} acceptStates={acceptStates} accepted={items.accepted}/>
+                <TransitionDiagram transFunc={items.transFunc} acceptStates={"Q5"} accepted={items.accepted}/>
                 
               </li>
             ))

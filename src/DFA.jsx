@@ -3,6 +3,7 @@ import './DFA.css'
 
 function Diagram( {currentState, failState, finalState} ) {
 
+    console.log('passed finalState: ', finalState)
     return (
             <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,89 +35,50 @@ function Diagram( {currentState, failState, finalState} ) {
             </defs>
 
             {/* --- STATES --- */}
-            {/* Row 1: 8 - 9 - 10 */}
-            {/* <circle cx="400" cy="60" r="35" className={`state 
-                ${currentState === 'Q8' ? 'active' : ''} 
-                ${failState === 'Q8' ? 'fail' : ''}
-                ${finalState === 'Q8accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q8reject' ? 'low-health-trigger' : ''}`} />
-            <circle cx="550" cy="60" r="35" className={`state 
-                ${currentState === 'Q9' ? 'active' : ''} 
-                ${failState === 'Q9' ? 'fail' : ''}
-                ${finalState === 'Q9accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q9reject' ? 'low-health-trigger' : ''}`} />
-            <circle cx="700" cy="60" r="35" className={`state 
-                ${currentState === 'QX' ? 'active' : ''} 
-                ${failState === 'QX' ? 'fail' : ''}
-                ${finalState === 'QXaccept' ? 'heal-trigger' : ''}
-                ${finalState === 'QXreject' ? 'low-health-trigger' : ''}`} /> */}
-
-            {/* <circle cx="400" cy="60" r="30" className="final-ring" />
-            <circle cx="550" cy="60" r="30" className="final-ring" /> */}
-            
 
             {/* Row 2: 3 - 5 */}
             <circle cx="400" cy="50" r="35" className={`state 
-                ${currentState === 'Q3' ? 'active' : ''} 
-                ${failState === 'Q3' ? 'fail' : ''}
-                ${finalState === 'Q3accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q3reject' ? 'low-health-trigger' : ''}`} />
+                ${currentState.includes("Q3") ? 'active' : ''} 
+                ${failState.includes("Q3") ? 'fail' : ''}
+                ${(finalState.includes("Q3") && finalState.includes("accept")) ? 'heal-trigger' : ''}
+                ${(finalState.includes("Q3") && finalState.includes("reject")) ? 'low-health-trigger' : ''}`} />
             <circle cx="650" cy="250" r="35" className={`state 
-                ${currentState === 'Q5' ? 'active' : ''} 
-                ${failState === 'Q5' ? 'fail' : ''}
-                ${finalState === 'Q5accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q5reject' ? 'low-health-trigger' : ''}`} />
+                ${currentState.includes("Q5")  ? 'active' : ''} 
+                ${failState.includes("Q5") ? 'fail' : ''}
+                ${(finalState.includes("Q5") && finalState.includes("accept")) ? 'heal-trigger' : ''}
+                ${(finalState.includes("Q5") && finalState.includes("reject")) ? 'low-health-trigger' : ''}`} />
             <circle cx="650" cy="250" r="30" className="final-ring" />
 
             {/* Row 3: 2 - 4 - 7 */}
             <circle cx="400" cy="180" r="35" className={`state 
-                ${currentState === 'Q2' ? 'active' : ''} 
-                ${failState === 'Q2' ? 'fail' : ''}
-                ${finalState === 'Q2accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q2reject' ? 'low-health-trigger' : ''}`} />
+                ${currentState.includes("Q2")  ? 'active' : ''} 
+                ${failState.includes("Q2") ? 'fail' : ''}
+                ${(finalState.includes("Q2") && finalState.includes("accept")) ? 'heal-trigger' : ''}
+                ${(finalState.includes("Q2") && finalState.includes("reject")) ? 'low-health-trigger' : ''}`} />
             <circle cx="400" cy="350" r="35" className={`state 
-                ${currentState === 'Q4' ? 'active' : ''} 
-                ${failState === 'Q4' ? 'fail' : ''}
-                ${finalState === 'Q4accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q4reject' ? 'low-health-trigger' : ''}`} />
-            {/* <circle cx="150" cy="300" r="35" className={`state 
-                ${currentState === 'Q7' ? 'active' : ''} 
-                ${failState === 'Q7' ? 'fail' : ''}
-                ${finalState === 'Q7accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q7reject' ? 'low-health-trigger' : ''}`} />
-            <circle cx="150" cy="300" r="30" className="final-ring" /> */}
-
+                ${currentState.includes("Q4")  ? 'active' : ''} 
+                ${failState.includes("Q4")  ? 'fail' : ''}
+                ${(finalState.includes("Q4") && finalState.includes("accept")) ? 'heal-trigger' : ''}
+                ${(finalState.includes("Q4") && finalState.includes("reject")) ? 'low-health-trigger' : ''}`} />
             {/* Row 4: 1 - 6 */}
             <circle cx="150" cy="250" r="35" className={`state 
-                ${currentState === 'Q1' ? 'active' : ''} 
-                ${failState === 'Q1' ? 'fail' : ''}
-                ${finalState === 'Q1accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q1reject' ? 'low-health-trigger' : ''}`} />
-            {/* <circle cx="250" cy="120" r="35" className={`state 
-                ${currentState === 'Q6' ? 'active' : ''} 
-                ${failState === 'Q6' ? 'fail' : ''}
-                ${finalState === 'Q6accept' ? 'heal-trigger' : ''}
-                ${finalState === 'Q6reject' ? 'low-health-trigger' : ''}`} />
-            <circle cx="250" cy="120" r="30" className="final-ring" /> */}
+                ${currentState.includes("Q1")  ? 'active' : ''} 
+                ${failState.includes("Q1") ? 'fail' : ''}
+                ${(finalState.includes("Q1") && finalState.includes("accept")) ? 'heal-trigger' : ''}
+                ${(finalState.includes("Q1") && finalState.includes("reject")) ? 'low-health-trigger' : ''}`} />
+            
 
             {/* --- LABELS --- */}
             <text x="150" y="255" textAnchor="middle" className="label">1</text>
-            {/* <text x="250" y="125" textAnchor="middle" className="label">6</text>
-            <text x="150" y="305" textAnchor="middle" className="label">7</text> */}
             <text x="400" y="185" textAnchor="middle" className="label">2</text>
             <text x="400" y="355" textAnchor="middle" className="label">4</text>
             <text x="400" y="55" textAnchor="middle" className="label">3</text>
             <text x="650" y="255" textAnchor="middle" className="label">5</text>
-            {/* <text x="400" y="65" textAnchor="middle" className="label">8</text>
-            <text x="550" y="65" textAnchor="middle" className="label">9</text>
-            <text x="700" y="65" textAnchor="middle" className="label">10</text> */}
-
+            
             {/* --- TRANSITIONS --- */}
-
             {/* Start arrow */}
             <polygon points="115,250 75,225 75,275" className="start-arrow" />
 
-           
             {/* 3 -> 2 (b) */}
             <line x1="420" y1="80" x2="420" y2="150" className="transition b" markerEnd="url(#arrow)" />
             <text x="425" y="120" className="tlabel">b</text>

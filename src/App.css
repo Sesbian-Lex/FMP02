@@ -127,4 +127,8 @@ input{
   padding: 10px;
 }
 
+.wrongKey{
+  color: lab(27.24% 48.13 36.77);
+}
+
 
